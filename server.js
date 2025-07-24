@@ -42,10 +42,6 @@ app.post('/contact', async (req, res) => {
 });
 
 // Serve React app for any other route
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
