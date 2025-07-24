@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://your-amplify-url.amplifyapp.com'],
+  origin: ['http://localhost:3000', 'https://main.d1dxxawjmxdrus.amplifyapp.com/'],
   methods: ['POST'],
 }));app.use(express.json());
 
@@ -35,7 +35,8 @@ app.post('/contact', async (req, res) => {
     };
 
     try {
-        await transporter.sendMail(mailOptions);
+        const info = await transporter.sendMail(mailOptions);
+        console.log("Email sent: ", info.response);
         res.status(200).send('Message sent successfully!');
     } catch (error) {
         console.error(error);
