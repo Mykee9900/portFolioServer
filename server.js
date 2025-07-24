@@ -9,8 +9,10 @@ const PORT = process.env.PORT || 5001;
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors()); 
-app.use(express.json());
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://your-amplify-url.amplifyapp.com'],
+  methods: ['POST'],
+}));app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'build')));
 
