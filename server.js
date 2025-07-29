@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://main.d1dxxawjmxdrus.amplifyapp.com/'],
+  origin: ['http://localhost:3000', process.env.FRONTEND_ORIGIN],
   methods: ['POST'],
 }));app.use(express.json());
 
